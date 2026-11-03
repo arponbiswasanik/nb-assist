@@ -1,0 +1,31 @@
+﻿id,topic,question,answer
+1,Account opening,What documents do I need to open a savings account?,"You need your NID or passport, two passport-size photos, and nominee details. A TIN certificate is optional. The minimum opening deposit is BDT 500."
+2,Account balance,What is the minimum balance for a savings account?,"Keep an average monthly balance of BDT 1,000. If it falls below this, a quarterly fee of BDT 150 plus VAT is charged."
+3,Debit card,What is the annual fee for the debit card?,The first year is free. From the second year the annual fee is BDT 500.
+4,Lost card,What should I do if my card is lost or stolen?,Call the 24-hour hotline 16999 immediately to block the card. A replacement card can be collected from your branch within 7 working days for a fee of BDT 300.
+5,PIN,How do I reset my card PIN?,"Open the NB Go app, go to Settings, then Card, then Reset PIN. You can also reset it at any Nirbhor Bank ATM using an OTP sent to your registered number."
+6,Mobile app,How do I register for the NB Go mobile app?,"Download NB Go, choose Register, enter your account number and registered mobile number, then enter the OTP we send you and set a 6-digit passcode."
+7,Transfer limits,What is the daily fund transfer limit?,Transfers to Nirbhor Bank accounts: up to BDT 10 lakh per day. Transfers to other banks through BEFTN: up to BDT 5 lakh per day. RTGS transfers start from BDT 1 lakh.
+8,BEFTN,When does a BEFTN transfer reach the other bank?,"A BEFTN transfer is credited by the next working day, as long as it is sent before 3:00 PM."
+9,ATM limit,What is the ATM withdrawal limit?,"You can withdraw up to BDT 50,000 per day per card, and up to BDT 20,000 in a single transaction."
+10,Branch hours,What are the branch opening hours?,"Branches are open Sunday to Thursday, 10:00 AM to 4:00 PM. They are closed on Friday and Saturday and on government holidays."
+11,Statements,How can I get a bank statement?,"The last 6 months of statements are free in the NB Go app. A printed, stamped statement from a branch costs BDT 100 per statement."
+12,Phone number,How do I change my registered mobile number?,"Visit your branch with your NID and fill in the update form, or update it in the NB Go app after face verification."
+13,Dormant account,"What happens if my account becomes dormant, and how do I reactivate it?",An account with no customer transaction for 12 months becomes dormant. Visit your branch with your NID and make a deposit to reactivate it.
+14,Joint account,Can I open a joint account?,"Yes. A joint account can have up to 2 holders, and both holders must sign the account opening documents."
+15,Nominee,How do I change my nominee?,Submit a nominee change form at your branch with the new nominee's NID and photo. Both the account holder and the nominee must sign.
+16,FDR,What is the minimum amount for a fixed deposit (FDR)?,"The minimum is BDT 25,000. Tenures are 3, 6 or 12 months. Current rates: 7.50% for 3 months, 8.25% for 6 months, 9.00% for 12 months per year."
+17,FDR early encashment,What happens if I break my FDR before maturity?,"If you encash early, interest is paid at the savings account rate of 4% per year from the deposit date, and the FDR rate no longer applies."
+18,Personal loan,Who is eligible for a personal loan?,"You must be 25 to 60 years old, salaried with a monthly income of at least BDT 30,000, and have at least 1 year in your current job. The maximum loan is BDT 10 lakh."
+19,Loan interest,What is the interest rate on a personal loan?,The interest rate is 12% per year on a reducing balance. There is a processing fee of 1% of the loan amount.
+20,Home loan,How much can I borrow for a home loan?,"You can borrow up to 70% of the property value, with a repayment period of up to 20 years."
+21,Credit card eligibility,Who can get a credit card?,"You must be 21 to 65 years old with a monthly income of at least BDT 40,000."
+22,Credit card billing,When is my credit card bill due?,Your statement is generated on the 5th of every month and the payment is due on the 25th of the same month.
+23,Late fee,What is the late payment fee on a credit card?,A flat late payment fee of BDT 500 applies if you miss the due date.
+24,Disputed transaction,What should I do if I see a transaction I did not make?,Report it within 30 days by calling 16999 or visiting your branch. We investigate within 15 working days and tell you the outcome.
+25,SMS alerts,How much do SMS alerts cost?,"SMS alerts cost a flat BDT 120 per year, charged to your account."
+26,Remittance,Is there a fee to receive money from abroad?,"Receiving remittance is free. The money is credited within 24 hours of confirmation, to an account in your own name."
+27,Cheque book,How do I get a cheque book?,Request one at your branch or in the app. A 25-leaf cheque book costs BDT 250 and is ready in 3 working days.
+28,Stop cheque,How can I stop payment on a cheque?,Submit a written stop-payment request at your branch. The fee is BDT 100 per cheque.
+29,Closing an account,How do I close my account?,"Visit your branch with your NID and fill in the closure form. If the account is closed within 6 months of opening, a fee of BDT 500 applies."
+30,KYC update,How often do I need to update my KYC information?,KYC must be updated every 5 years. We will send you an SMS reminder before the deadline. Bring your NID and a recent utility bill to your branch.

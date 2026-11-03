@@ -1,0 +1,181 @@
+﻿faq_id,language,text,source
+1,en,Which papers should I bring to start a savings account?,ai_draft_from_faq
+1,en,"Which ID and photos do I need to start a new account, and how much is the first deposit?",ai_draft_from_faq
+1,bn,সেভিংস অ্যাকাউন্ট খুলতে কী কী কাগজপত্র লাগে?,ai_draft_from_faq
+1,bn,নতুন অ্যাকাউন্ট খুলতে কোন ডকুমেন্ট ও কত টাকা জমা দিতে হয়?,ai_draft_from_faq
+1,banglish,Savings account khulte ki ki kagoj lage?,ai_draft_from_faq
+1,banglish,"Notun account khulbo, ki ki document ar koto taka lagbe?",ai_draft_from_faq
+2,en,How much money must I keep in my savings account each month?,ai_draft_from_faq
+2,en,Is there a penalty if my savings balance drops too low?,ai_draft_from_faq
+2,bn,মাসিক গড় ব্যালেন্স কত রাখা বাধ্যতামূলক?,ai_draft_from_faq
+2,bn,ব্যালেন্স কম থাকলে কি জরিমানা কাটে?,ai_draft_from_faq
+2,banglish,Savings account e minimum koto taka balance rakhte hoy?,ai_draft_from_faq
+2,banglish,Balance kom thakle ki charge kate?,ai_draft_from_faq
+3,en,Do I have to pay yearly charges for my debit card?,ai_draft_from_faq
+3,en,How much is the debit card renewal fee after the first year?,ai_draft_from_faq
+3,bn,ডেবিট কার্ডের জন্য বছরে কত টাকা দিতে হয়?,ai_draft_from_faq
+3,bn,ডেবিট কার্ড কি প্রথম বছর ফ্রি?,ai_draft_from_faq
+3,banglish,Debit card er bochorik charge koto?,ai_draft_from_faq
+3,banglish,Debit card ki prothom bochor free?,ai_draft_from_faq
+4,en,"My card was stolen, what do I do now?",ai_draft_from_faq
+4,en,How can I block a lost card and get a new one?,ai_draft_from_faq
+4,bn,"কেউ আমার কার্ড চুরি করেছে, এখন আমার কী করা উচিত?",ai_draft_from_faq
+4,bn,হারানো কার্ড কীভাবে ব্লক করব এবং নতুন কার্ড কীভাবে পাব?,ai_draft_from_faq
+4,banglish,"Amar card chori hoye gese, ekhon ki korbo?",ai_draft_from_faq
+4,banglish,Card hariye gele block kibhabe korbo ar notun card kivabe pabo?,ai_draft_from_faq
+5,en,I forgot my card PIN. How can I set a new one?,ai_draft_from_faq
+5,en,Where in the app can I change my PIN?,ai_draft_from_faq
+5,bn,কার্ডের পিন ভুলে গেলে নতুন পিন কীভাবে সেট করব?,ai_draft_from_faq
+5,bn,অ্যাপ থেকে পিন কোথায় বদলানো যায়?,ai_draft_from_faq
+5,banglish,"PIN mone nai, notun PIN kemne set korbo?",ai_draft_from_faq
+5,banglish,App theke PIN change korar option kothay?,ai_draft_from_faq
+6,en,How can I sign up for the NB Go app?,ai_draft_from_faq
+6,en,What are the steps to activate mobile banking?,ai_draft_from_faq
+6,bn,NB Go অ্যাপে কীভাবে রেজিস্ট্রেশন করব?,ai_draft_from_faq
+6,bn,মোবাইল ব্যাংকিং চালু করার ধাপগুলো কী?,ai_draft_from_faq
+6,banglish,NB Go app e kibhabe registration korbo?,ai_draft_from_faq
+6,banglish,Mobile banking chalu korte ki ki korte hobe?,ai_draft_from_faq
+7,en,How much money can I send in a day to another account?,ai_draft_from_faq
+7,en,What is the daily limit for BEFTN and RTGS payments?,ai_draft_from_faq
+7,bn,একদিনে সর্বোচ্চ কত টাকা অন্য অ্যাকাউন্টে পাঠানো যায়?,ai_draft_from_faq
+7,bn,BEFTN আর RTGS এ দৈনিক লিমিট কত?,ai_draft_from_faq
+7,banglish,Ek dine maximum koto taka onno account e pathano jay?,ai_draft_from_faq
+7,banglish,BEFTN ar RTGS er daily limit koto?,ai_draft_from_faq
+8,en,How long does it take for money sent by BEFTN to arrive?,ai_draft_from_faq
+8,en,Until what time can I send a BEFTN transfer to get it credited by the next working day?,ai_draft_from_faq
+8,bn,BEFTN এ টাকা পাঠালে অন্য ব্যাংকে পৌঁছাতে কত সময় লাগে?,ai_draft_from_faq
+8,bn,পরের কার্যদিবসে টাকা পৌঁছানোর জন্য কয়টার আগে BEFTN করতে হবে?,ai_draft_from_faq
+8,banglish,BEFTN e taka pathale onno bank e kokhon pouchay?,ai_draft_from_faq
+8,banglish,BEFTN er cut-off time koita?,ai_draft_from_faq
+9,en,What is the maximum I can take out from an ATM?,ai_draft_from_faq
+9,en,How much cash can I get per transaction at an ATM?,ai_draft_from_faq
+9,bn,এটিএম বুথ থেকে একবারে কতটুকু নগদ টাকা পাওয়া যায়?,ai_draft_from_faq
+9,bn,কার্ড দিয়ে মোট কত টাকা ক্যাশ তোলা যায় প্রতিদিন?,ai_draft_from_faq
+9,banglish,ATM theke ek bare koto taka tola jay?,ai_draft_from_faq
+9,banglish,Din e card diye total koto cash uthano jay?,ai_draft_from_faq
+10,en,What time do branches open and close?,ai_draft_from_faq
+10,en,Are branches open on Saturdays and public holidays?,ai_draft_from_faq
+10,bn,ব্যাংকের শাখা কয়টা থেকে কয়টা পর্যন্ত খোলা থাকে?,ai_draft_from_faq
+10,bn,শনিবার আর সরকারি ছুটিতে কি শাখা খোলা থাকে?,ai_draft_from_faq
+10,banglish,Branch kokhon khole ar kokhon bondho hoy?,ai_draft_from_faq
+10,banglish,Weekend ba public holiday te ki branch e jaoa jay?,ai_draft_from_faq
+11,en,Where can I download my account statement?,ai_draft_from_faq
+11,en,How much do I pay for a stamped paper statement?,ai_draft_from_faq
+11,bn,অ্যাকাউন্ট স্টেটমেন্ট কোথায় পাব?,ai_draft_from_faq
+11,bn,ব্যাংকের সিল দেওয়া প্রিন্ট করা স্টেটমেন্টের জন্য কত টাকা লাগে?,ai_draft_from_faq
+11,banglish,Account statement kothay pabo?,ai_draft_from_faq
+11,banglish,Branch theke print kora statement nite koto taka lage?,ai_draft_from_faq
+12,en,I changed my SIM. How do I update my number with the bank?,ai_draft_from_faq
+12,en,Can I update my registered phone number through the app?,ai_draft_from_faq
+12,bn,ব্যাংকে রেজিস্টার্ড ফোন নম্বর বদলাতে কী করতে হবে?,ai_draft_from_faq
+12,bn,নতুন মোবাইল নম্বর ব্যাংকে কীভাবে আপডেট করব?,ai_draft_from_faq
+12,banglish,Registered phone number change korte ki korte hobe?,ai_draft_from_faq
+12,banglish,Notun mobile number bank e update korbo kibhabe?,ai_draft_from_faq
+13,en,When does an inactive account get marked dormant?,ai_draft_from_faq
+13,en,How can I reactivate a dormant account?,ai_draft_from_faq
+13,bn,কতদিন লেনদেন না করলে অ্যাকাউন্ট ডরম্যান্ট হয়?,ai_draft_from_faq
+13,bn,ডরম্যান্ট অ্যাকাউন্ট আবার চালু করার উপায় কী?,ai_draft_from_faq
+13,banglish,Koto din transaction na korle account dormant hoy?,ai_draft_from_faq
+13,banglish,Dormant account abar active korbo kemne?,ai_draft_from_faq
+14,en,Is it possible to hold an account together with someone else?,ai_draft_from_faq
+14,en,How many people can be on a joint account?,ai_draft_from_faq
+14,bn,অন্য কারো সাথে যৌথ অ্যাকাউন্ট খোলা যায়?,ai_draft_from_faq
+14,bn,জয়েন্ট অ্যাকাউন্টে সর্বোচ্চ কতজন থাকতে পারে?,ai_draft_from_faq
+14,banglish,Onno kono jon er sathe joint account khola jay?,ai_draft_from_faq
+14,banglish,Joint account e max koto jon holder thakte pare?,ai_draft_from_faq
+15,en,What is the process to replace the nominee on my account?,ai_draft_from_faq
+15,en,Which documents are required to update my nominee?,ai_draft_from_faq
+15,bn,অ্যাকাউন্টের নমিনি বদলানোর নিয়ম কী?,ai_draft_from_faq
+15,bn,নমিনি আপডেট করতে কোন কাগজ লাগে?,ai_draft_from_faq
+15,banglish,Nominee er naam bodlate chaile process ta ki?,ai_draft_from_faq
+15,banglish,Nominee update er jonno kon kon document lagbe?,ai_draft_from_faq
+16,en,What is the smallest amount I can put into an FDR?,ai_draft_from_faq
+16,en,What interest rates does the bank pay on fixed deposits?,ai_draft_from_faq
+16,bn,FDR খুলতে সর্বনিম্ন কত টাকা লাগে?,ai_draft_from_faq
+16,bn,ফিক্সড ডিপোজিটে সুদের হার কত?,ai_draft_from_faq
+16,banglish,FDR e shurute kom pokkhe koto taka rakha jay?,ai_draft_from_faq
+16,banglish,Fixed deposit er interest rate ar tenure ki ki ache?,ai_draft_from_faq
+17,en,"If I withdraw my fixed deposit before maturity, how much interest do I get?",ai_draft_from_faq
+17,en,Is there a penalty for breaking an FDR early?,ai_draft_from_faq
+17,bn,FDR মেয়াদের আগে ভাঙলে কত সুদ পাব?,ai_draft_from_faq
+17,bn,মেয়াদ পূর্ণ হওয়ার আগে FDR তুললে কি কোনো ক্ষতি হয়?,ai_draft_from_faq
+17,banglish,Meyad er aage FDR tule felle koto interest pabo?,ai_draft_from_faq
+17,banglish,FDR age bhangle ki rate kome jay?,ai_draft_from_faq
+18,en,Can I qualify for a personal loan from the bank?,ai_draft_from_faq
+18,en,What are the age and income requirements for a personal loan?,ai_draft_from_faq
+18,bn,পার্সোনাল লোন পেতে বয়স আর আয়ের শর্ত কী?,ai_draft_from_faq
+18,bn,লোন নিতে কত বছর চাকরি করতে হয়?,ai_draft_from_faq
+18,banglish,Personal loan pete ki ki shorto pur korte hoy?,ai_draft_from_faq
+18,banglish,Loan nite boyosh ar salary koto hote hobe?,ai_draft_from_faq
+19,en,How much interest will I pay on a personal loan each year?,ai_draft_from_faq
+19,en,Is there any processing charge on loans?,ai_draft_from_faq
+19,bn,পার্সোনাল লোনে বছরে কত শতাংশ সুদ দিতে হয়?,ai_draft_from_faq
+19,bn,লোনের প্রসেসিং ফি কত?,ai_draft_from_faq
+19,banglish,Personal loan e bochore koto percent sud dite hoy?,ai_draft_from_faq
+19,banglish,Loan nile processing fee dite hoy ki?,ai_draft_from_faq
+20,en,What percentage of a property's price will the bank finance?,ai_draft_from_faq
+20,en,What is the maximum repayment period for a home loan?,ai_draft_from_faq
+20,bn,বাড়ি কেনার জন্য সম্পত্তির দামের কত শতাংশ লোন পাওয়া যায়?,ai_draft_from_faq
+20,bn,বাড়ির লোনের কিস্তি কত বছর ধরে চালানো যায়?,ai_draft_from_faq
+20,banglish,Bari kinte property er dam er koto percent loan pawa jay?,ai_draft_from_faq
+20,banglish,Home loan koto bochore shodh korte hoy?,ai_draft_from_faq
+21,en,What income do I need to qualify for a credit card?,ai_draft_from_faq
+21,en,At what age can I apply for a credit card?,ai_draft_from_faq
+21,bn,ক্রেডিট কার্ড পেতে মাসিক আয় কত হতে হয়?,ai_draft_from_faq
+21,bn,ক্রেডিট কার্ডের জন্য আবেদনের বয়সসীমা কত?,ai_draft_from_faq
+21,banglish,Credit card er jonno apply korte salary koto thakte hobe?,ai_draft_from_faq
+21,banglish,Credit card er jonno boyoser shima koto?,ai_draft_from_faq
+22,en,On what date is my credit card statement issued?,ai_draft_from_faq
+22,en,What is the payment deadline for my credit card statement?,ai_draft_from_faq
+22,bn,ক্রেডিট কার্ডের স্টেটমেন্ট কবে আসে?,ai_draft_from_faq
+22,bn,ক্রেডিট কার্ডের পেমেন্টের শেষ তারিখ কত তারিখ?,ai_draft_from_faq
+22,banglish,Credit card er statement kon tarikhe toiri hoy?,ai_draft_from_faq
+22,banglish,Credit card bill er last date kobe?,ai_draft_from_faq
+23,en,What penalty applies if I pay my credit card bill after the due date?,ai_draft_from_faq
+23,en,How much is charged for a missed credit card payment?,ai_draft_from_faq
+23,bn,ক্রেডিট কার্ডের বিল দেরিতে দিলে কত টাকা জরিমানা?,ai_draft_from_faq
+23,bn,সময়মতো কার্ডের টাকা না দিলে ফি কত?,ai_draft_from_faq
+23,banglish,Credit card bill deri te dile koto taka fine?,ai_draft_from_faq
+23,banglish,Due date miss hole late fee koto?,ai_draft_from_faq
+24,en,There is a charge on my account I do not recognize. Who do I tell?,ai_draft_from_faq
+24,en,How long do I have to report unauthorized activity on my account?,ai_draft_from_faq
+24,bn,"অ্যাকাউন্টে এমন লেনদেন দেখছি যা আমি করিনি, কোথায় জানাব?",ai_draft_from_faq
+24,bn,অননুমোদিত লেনদেন কত দিনের মধ্যে রিপোর্ট করতে হয়?,ai_draft_from_faq
+24,banglish,"Account e ekta charge dekhchi jeta ami kori ni, kake janabo?",ai_draft_from_faq
+24,banglish,Unauthorized transaction koto diner moddhe report korte hoy?,ai_draft_from_faq
+25,en,What is the yearly cost of SMS notifications?,ai_draft_from_faq
+25,en,Do I pay for transaction SMS alerts?,ai_draft_from_faq
+25,bn,SMS অ্যালার্ট সার্ভিসের বছরের খরচ কত?,ai_draft_from_faq
+25,bn,লেনদেনের SMS পেতে কি টাকা দিতে হয়?,ai_draft_from_faq
+25,banglish,SMS alert nile bochore koto taka kate?,ai_draft_from_faq
+25,banglish,Transaction er SMS pete charge lage ki?,ai_draft_from_faq
+26,en,Do I pay anything when money arrives from overseas?,ai_draft_from_faq
+26,en,How quickly does remittance money reach my account?,ai_draft_from_faq
+26,bn,বিদেশ থেকে টাকা আসলে কি কোনো চার্জ লাগে?,ai_draft_from_faq
+26,bn,রেমিট্যান্সের টাকা অ্যাকাউন্টে কত তাড়াতাড়ি জমা হয়?,ai_draft_from_faq
+26,banglish,Probash theke taka ashle kono charge lage?,ai_draft_from_faq
+26,banglish,Remittance er taka account e koto shomoy e dhoke?,ai_draft_from_faq
+27,en,How do I order a new cheque book and what does it cost?,ai_draft_from_faq
+27,en,How long until my cheque book is ready?,ai_draft_from_faq
+27,bn,চেক বই নিতে চাইলে কীভাবে অনুরোধ করব আর খরচ কত?,ai_draft_from_faq
+27,bn,চেক বইয়ের অর্ডার দিলে কয় কার্যদিবসে তৈরি হয়?,ai_draft_from_faq
+27,banglish,"Cheque book nite chai, kibhabe request korbo?",ai_draft_from_faq
+27,banglish,Cheque book er dam koto ar kotodin e pabo?,ai_draft_from_faq
+28,en,How can I cancel a cheque I already issued?,ai_draft_from_faq
+28,en,Does the bank charge to block a cheque from being paid?,ai_draft_from_faq
+28,bn,আমি যে চেক দিয়েছি তার পেমেন্ট কীভাবে বন্ধ করব?,ai_draft_from_faq
+28,bn,চেকের পেমেন্ট স্টপ করতে কত ফি লাগে?,ai_draft_from_faq
+28,banglish,Je cheque diyechi seta bondho korbo kemne?,ai_draft_from_faq
+28,banglish,Cheque stop payment er fee koto?,ai_draft_from_faq
+29,en,What is the procedure to shut down my account?,ai_draft_from_faq
+29,en,Is there a cancellation fee if I shut a recently opened account?,ai_draft_from_faq
+29,bn,অ্যাকাউন্ট বন্ধ করতে কী করতে হবে?,ai_draft_from_faq
+29,bn,নতুন অ্যাকাউন্ট কিছুদিনের মধ্যে বন্ধ করলে কি ফি লাগে?,ai_draft_from_faq
+29,banglish,Account bondho korte chaile ki korte hobe?,ai_draft_from_faq
+29,banglish,Notun account tara tari bondho korle charge lage ki?,ai_draft_from_faq
+30,en,How frequently must I refresh my KYC details?,ai_draft_from_faq
+30,en,What do I bring to the branch for a KYC update?,ai_draft_from_faq
+30,bn,কত বছর পর পর KYC হালনাগাদ করতে হয়?,ai_draft_from_faq
+30,bn,KYC আপডেটের জন্য শাখায় কী কী নিয়ে যেতে হবে?,ai_draft_from_faq
+30,banglish,KYC document koto bochor ontor ontor jama dite hoy?,ai_draft_from_faq
+30,banglish,KYC update korte branch e ki ki nite hobe?,ai_draft_from_faq

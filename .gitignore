@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env files (Phase 5 online_compare will use API keys)
+.env
+.env.local
+
+# Local ollama model cache (not committed)
+.ollama/
+
+# Evaluation intermediate cache (results/ is committed, intermediates are not)
+results/*.tmp
+results/cache/
