@@ -1,118 +1,123 @@
-# NB Assist — central configuration
-# All runtime values live here. Nothing in code should be hard-coded.
-
 ollama:
-  host: "127.0.0.1"
+  host: 127.0.0.1
   port: 11434
   timeout_s: 60
-  keep_alive_s: 300          # keep model warm between calls (warm-up at startup)
-
+  keep_alive_s: 300
 models:
-  primary: "gemma3:4b"        # selected because it produced usable Bangla script in smoke tests
-  embedding: "bge-m3"          # runs on CPU, frees VRAM for the LLM
-  rejected_baseline: "qwen2.5:3b"   # kept for ablation evidence; failed Bangla smoke test
-  rejected_reason: "Bangla script gibberish, invented facts in smoke test"
-
+  primary: gemma3:4b
+  embedding: bge-m3
+  rejected_baseline: qwen2.5:3b
+  rejected_reason: Bangla script gibberish, invented facts in smoke test
 paths:
-  faq: "data/bank-faq.csv"
-  test_questions: "data/test-questions.csv"
-  answer_bank: "data/answer_bank.csv"
-  paraphrase_index: "data/paraphrase_index.csv"
-  dev_set: "data/dev_set.csv"
-  test_gold: "data/test_gold.csv"
-  idk_templates: "data/idk_templates.csv"
-  banglish_variants: "data/banglish_variants.csv"
-  results_dir: "results"
-
-# Language detection — deterministic, by code
+  faq: data/bank-faq.csv
+  test_questions: data/test-questions.csv
+  answer_bank: data/answer_bank.csv
+  paraphrase_index: data/paraphrase_index.csv
+  dev_set: data/dev_set.csv
+  test_gold: data/test_gold.csv
+  idk_templates: data/idk_templates.csv
+  banglish_variants: data/banglish_variants.csv
+  results_dir: results
 language:
-  bn_char_threshold: 0.30     # share of Bangla-block chars above this => bn
-  ties_to: "en"               # ambiguous latin-script => English
+  bn_char_threshold: 0.3
+  ties_to: en
   banglish_lexicon:
-    - ami       # I
-    - amar      # my
-    - koto      # how much
-    - kibhabe   # how (variant)
-    - kivabe    # how (variant)
-    - kemne     # how (variant)
-    - korbo     # will do
-    - korchi    # am doing
-    - ki        # what
-    - jay       # go/can
-    - hobe      # will be
-    - lage      # need/feel
-    - ache      # have/is
-    - nai       # not
-    - ta        # it
-    - er        # of (possessive)
-  char_ngram_range: [3, 4]    # for Banglish vs English scoring
-
-# Retrieval — hybrid dense + lexical, fused
+  - ami
+  - amar
+  - koto
+  - kibhabe
+  - kivabe
+  - kemne
+  - korbo
+  - korchi
+  - ki
+  - jay
+  - hobe
+  - lage
+  - ache
+  - nai
+  - ta
+  - er
+  char_ngram_range:
+  - 3
+  - 4
 retrieval:
   top_k: 3
   dense_weight: 0.7
   lexical_weight: 0.3
-  fusion: "weighted_sum"      # alternative: "rrf" (reciprocal rank fusion)
-  char_ngram_range: [3, 5]   # for lexical TF-IDF (robust to Banglish spelling variance)
-  return_margins: true        # gap between top-1 and top-2
-
-# Gate — the hardest part. Three signals, three zones.
-# Thresholds below are PLACEHOLDERS — calibrate on dev_set only, never on test_gold.
+  fusion: weighted_sum
+  char_ngram_range:
+  - 3
+  - 5
+  return_margins: true
 gate:
-  t_low: 0.45                 # below => handoff (placeholder, calibrate)
-  t_high: 0.70               # above with no slot flag + good margin => candidate (placeholder)
-  margin_min: 0.10            # min gap between top-1 and top-2 for candidate
+  t_low: 0.3
+  t_high: 0.55
+  margin_min: 0.1
   slot_check_enabled: true
-  slot_keywords:              # tokens that, if absent in matched FAQ, flag a near-miss
-    - Singapore
-    - Sylhet
-    - student
-    - crypto
-    - gold
-    - dollar
-    - visa
-    - share
+  slot_keywords:
+  - Singapore
+  - Sylhet
+  - student
+  - crypto
+  - gold
+  - dollar
+  - visa
+  - share
   verifier_enabled: true
-  verifier_skip_above: 0.85   # very high score => skip verifier (latency optimization)
-  verifier_prompt_template: "Does this FAQ entry directly answer the customer's question? Reply YES or NO only.\n\nFAQ entry: {faq}\nQuestion: {question}"
-
-# Generation — guarded, low temperature, bounded length
+  verifier_skip_above: 0.85
+  verifier_prompt_template: "You are a banking FAQ verifier. Decide whether the FAQ\
+    \ entry directly answers the customer's question, not just talks about a similar\
+    \ topic.\nTwo questions MATCH if the FAQ gives a direct answer to what the customer\
+    \ is asking, even if the wording, language, or phrasing differs. Paraphrases,\
+    \ translations, and Banglish variants all match.\nTwo questions do NOT MATCH if:\
+    \ - The customer asks about a different topic from the FAQ entry. - The customer\
+    \ asks about a specific case the FAQ does not cover,\n  even if the topic is similar\
+    \ (e.g. age limit, eligibility for a\n  sub-group not mentioned in the FAQ).\n\
+    - The customer asks for live data (today's rate, current price)\n  that the FAQ\
+    \ cannot contain.\n- The customer asks for another person's private account data.\n\
+    When uncertain, prefer NO.\nReply with one word only: YES or NO.\nExamples:\n\
+    FAQ Q: What is the annual fee for the debit card? FAQ A: The first year is free.\
+    \ From the second year the annual fee is BDT 500. Question: debit card er annual\
+    \ fee koto? Answer: YES\nFAQ Q: What is the personal loan interest rate? FAQ A:\
+    \ The rate starts at 12 percent per year for eligible customers aged 25 to 60.\
+    \ Question: I am 17, can I get a student loan? Answer: NO\nFAQ Q: What is the\
+    \ late payment fee on a credit card? FAQ A: A late fee of BDT 500 plus VAT is\
+    \ charged if the minimum is not paid. Question: Will you waive my late fee because\
+    \ my business made a loss? Answer: NO\nFAQ: {faq} Question: {question} Answer:"
 generation:
   temperature: 0
   max_tokens: 200
-  num_fewshot: 2              # per language
+  num_fewshot: 2
   keep_numbers_unchanged: true
-  script_instruction: true    # explicit per-language script rule in prompt
-
-# Validators — deterministic, run after generation
+  script_instruction: true
 validators:
-  script_check: true          # Banglish/EN must not contain Bangla chars
-  fact_check: true             # numbers, amounts, phones must come from source
-  extra_content_check: true    # low-overlap sentences flagged as invented
+  script_check: true
+  fact_check: true
+  extra_content_check: true
   length_check: true
   loop_check: true
   retry_on_fail: 1
-  fallback_to_verified: true  # send verified answer verbatim if retry also fails
-
-# Tracing — log per-stage scores and decision path
+  fallback_to_verified: true
 trace:
   enabled: true
-  log_path: "results/trace.jsonl"
-  mask_digits: true           # privacy: mask digits in logs
-  store_raw_text: false       # do not store raw customer text by default
-
-# Evaluation
+  log_path: results/trace.jsonl
+  mask_digits: true
+  store_raw_text: false
 eval:
-  languages: ["en", "bn", "banglish"]
+  languages:
+  - en
+  - bn
+  - banglish
   metrics:
-    - retrieval_top1_accuracy
-    - answer_correctness
-    - idk_recall
-    - false_handoff_rate
-    - unsafe_answers
-    - language_match
-    - latency_p50
-    - latency_p95
-    - path_mix
+  - retrieval_top1_accuracy
+  - answer_correctness
+  - idk_recall
+  - false_handoff_rate
+  - unsafe_answers
+  - language_match
+  - latency_p50
+  - latency_p95
+  - path_mix
   run_cold_warm_split: true
   seed: 42

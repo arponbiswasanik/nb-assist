@@ -1,0 +1,8 @@
+{
+  "t_low": 0.3,
+  "t_high": 0.55,
+  "idk_recall": 73.7,
+  "false_handoff_rate": 0.0,
+  "unsafe_count": 5,
+  "dev_set_size": 40
+}
