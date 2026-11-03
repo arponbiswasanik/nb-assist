@@ -1,0 +1,41 @@
+id,language,expected_decision,gold_faq_id,predicted_path,predicted_faq_id,retrieval_top1_id,answer_correctness,language_match,latency_s,gate_zone,verifier_said,slot_flag,reply_excerpt
+1,banglish,answer,19,handoff,,,,True,0.0,,,False,"Ei bishoye ami nishchit na, tai apnake ekjon representative er sathe connect kore dichhi."
+2,en,answer,8,generated,8,8,True,True,5.807,candidate,YES,False,"A BEFTN transfer is credited by the next working day, as long as it is sent before 3:00 PM."
+3,banglish,answer,24,generated,24,24,True,True,5.332,candidate,YES,False,15 working day er moddhe tadonto kore apnake fol janabo.
+4,en,answer,17,generated,17,17,True,True,6.044,candidate,YES,False,"The FDR rate no longer applies. Interest is paid at the savings account rate of 4% per year from the deposit date, if yo"
+5,en,answer,23,generated,23,23,True,True,5.385,candidate,YES,False,A flat late payment fee of BDT 500 applies if you miss the due date.
+6,bn,answer,22,generated,22,22,True,True,5.115,candidate,YES,False,একই মাসের 25 তারিখের মধ্যে পেমেন্ট করতে হয়।
+7,banglish,answer,7,generated,7,7,True,True,6.417,candidate,YES,False,Dine sorbocho BDT 10 lakh porjonto transfer kora jay. RTGS transfer shuru hoy BDT 1 lakh theke.
+8,en,answer,11,generated,11,11,True,True,6.297,candidate,YES,False,"You can view the last 6 months of statements for free in the NB Go app. A printed, stamped statement from a branch costs"
+9,bn,answer,25,generated,25,25,True,True,4.895,candidate,YES,False,வருடத்திற்கு BDT 120 চার্জ লাগে।
+10,bn,answer,27,generated,27,27,True,True,4.629,candidate,YES,False,3 কার্যদিবসের মধ্যে প্রস্তুত হয়।
+11,en,handoff,,handoff,19,19,,True,2.717,handoff_verifier,NO,False,"I don't know, let me connect you to a person."
+12,banglish,answer,16,generated,16,16,True,True,6.191,candidate,YES,False,"Minimum BDT 25,000. Meyad 3, 6 ba 12 mash."
+13,bn,handoff,,handoff,,,,True,0.0,,,False,"আমি এই বিষয়ে নিশ্চিত নই, আমি আপনাকে একজন প্রতিনিধির সাথে যুক্ত করে দিচ্ছি।"
+14,bn,answer,9,generated,9,9,True,True,5.052,candidate,YES,False,"প্রতি কার্ড দিয়ে দিনে সর্বোচ্চ BDT 50,000 তোলা যায়।"
+15,en,answer,14,generated,14,14,True,True,2.853,candidate,,False,"Yes. A joint account can have up to 2 holders, and both holders must sign the account opening documents."
+16,en,answer,1,generated,1,1,True,True,2.887,candidate,,False,"You need your NID or passport, two passport-size photos, and nominee details. A TIN certificate is optional."
+17,banglish,answer,28,generated,28,28,True,True,6.152,candidate,YES,False,Cheque er payment stop korbo er jonno Branch e likhito vabe payment stop er request jama din. Protiti cheque er jonno fe
+18,bn,handoff,,handoff,,,,True,0.0,,,False,"আমি এই বিষয়ে নিশ্চিত নই, আমি আপনাকে একজন প্রতিনিধির সাথে যুক্ত করে দিচ্ছি।"
+19,bn,handoff,,handoff,10,10,,True,2.683,handoff_verifier,NO,False,"আমি এই বিষয়ে নিশ্চিত নই, আমি আপনাকে একজন প্রতিনিধির সাথে যুক্ত করে দিচ্ছি।"
+20,bn,answer,2,generated,1,1,True,True,5.039,candidate,YES,False,অ্যাকাউন্ট খোলার ন্যূনতম জমা BDT 500।
+21,en,handoff,,handoff,29,29,,True,0.037,handoff_slot,,False,"I don't know, let me connect you to a person."
+22,bn,answer,18,generated,18,18,True,True,8.199,candidate,YES,False,"পার্সোনাল লোনের জন্য আপনার বয়স 25 থেকে 60 বছরের মধ্যে হতে হবে, বেতনভুক্ত চাকরিজীবী হতে হবে যার মাসিক আয় কমপক্ষে BDT 30"
+23,banglish,answer,3,generated,3,3,True,True,2.891,candidate,,False,Prothom bochor free. Ditiyo bochor theke annual fee BDT 500.
+24,banglish,answer,5,generated,5,5,True,True,5.871,candidate,YES,False,Chaile Nirbhor Bank ATM theke apnar registered number e pathano OTP diye-o PIN reset korte parben.
+25,en,answer,10,generated,10,10,True,True,6.152,candidate,YES,False,"Branches are open Sunday to Thursday, 10:00 AM to 4:00 PM. They are closed on Friday and Saturday and on government holi"
+26,bn,answer,15,generated,15,15,True,True,5.917,candidate,YES,False,শাখায় নতুন নমিনির NID ও ছবিসহ নমিনি পরিবর্তনের ফর্ম জমা দিন। অ্যাকাউন্ট হোল্ডার এবং নমিনি উভয়কেই সই করতে হবে।
+27,bn,answer,4,generated,4,4,True,True,4.546,candidate,,False,কার্ড ব্লক করতে এখনই 24 ঘণ্টার হটলাইন 16999 নম্বরে কল করুন। নতুন কার্ড 7 কার্যদিবসের মধ্যে আপনার শাখা থেকে সংগ্রহ করা যা
+28,en,answer,6,generated,6,6,True,True,3.408,candidate,,False,"Download NB Go, choose Register, enter your account number and registered mobile number, then enter the OTP we send you "
+29,en,answer,26,generated,26,26,True,True,3.013,candidate,,False,"Receiving remittance is free. The money is credited within 24 hours of confirmation, to an account in your own name."
+30,en,answer,20,generated,20,20,True,True,2.424,candidate,,False,You can borrow up to 70% of the property value.
+31,banglish,answer,21,generated,21,21,True,True,5.391,candidate,YES,False,"Masik income kompokkhe BDT 40,000 hote hobe."
+32,en,handoff,,handoff,,,,True,0.0,,,False,"I don't know, let me connect you to a person."
+33,banglish,handoff,,handoff,,,,True,0.0,,,False,"Ei bishoye ami nishchit na, tai apnake ekjon representative er sathe connect kore dichhi."
+34,bn,answer,12,handoff,,,,True,0.0,,,False,"আমি এই বিষয়ে নিশ্চিত নই, আমি আপনাকে একজন প্রতিনিধির সাথে যুক্ত করে দিচ্ছি।"
+35,banglish,answer,13,generated,13,13,True,True,5.488,candidate,YES,False,"Account dormant hoye gele, NID niye branch e giye taka jama din korte hobe."
+36,en,handoff,,handoff,12,12,,True,0.134,handoff_slot,,False,"I don't know, let me connect you to a person."
+37,banglish,handoff,,handoff,18,18,,True,0.05,handoff_slot,,False,"Ei bishoye ami nishchit na, tai apnake ekjon representative er sathe connect kore dichhi."
+38,banglish,answer,30,generated,30,30,True,True,5.021,candidate,YES,False,KYC proti 5 bochore update korte hoy.
+39,bn,handoff,,handoff,4,4,,True,2.621,handoff_verifier,NO,False,"আমি এই বিষয়ে নিশ্চিত নই, আমি আপনাকে একজন প্রতিনিধির সাথে যুক্ত করে দিচ্ছি।"
+40,en,answer,29,generated,29,29,True,True,6.146,candidate,YES,False,"Visit your branch with your NID and fill in the closure form. If the account is closed within 6 months of opening, a fee"
