@@ -1,0 +1,92 @@
+{
+  "overall": {
+    "total": 40,
+    "in_scope": 30,
+    "out_scope": 10,
+    "retrieval_top1_accuracy": 90.0,
+    "answer_correctness": 96.43,
+    "idk_recall": 40.0,
+    "false_handoff_rate": 6.67,
+    "unsafe_answers_pct": 60.0,
+    "unsafe_answers_count": 6,
+    "language_match": 97.5,
+    "latency_p50_s": 2.856,
+    "latency_p95_s": 4.756,
+    "latency_mean_s": 2.648,
+    "path_mix": {
+      "generated": 34,
+      "retry": 0,
+      "fallback": 0,
+      "handoff": 6,
+      "unknown": 0
+    }
+  },
+  "per_language": {
+    "banglish": {
+      "total": 12,
+      "in_scope": 10,
+      "out_scope": 2,
+      "retrieval_top1_accuracy": 90.0,
+      "answer_correctness": 100.0,
+      "idk_recall": 50.0,
+      "false_handoff_rate": 10.0,
+      "unsafe_answers_pct": 50.0,
+      "unsafe_answers_count": 1,
+      "language_match": 100.0,
+      "latency_p50_s": 3.276,
+      "latency_p95_s": 5.296,
+      "latency_mean_s": 3.077,
+      "path_mix": {
+        "generated": 10,
+        "retry": 0,
+        "fallback": 0,
+        "handoff": 2,
+        "unknown": 0
+      }
+    },
+    "en": {
+      "total": 15,
+      "in_scope": 11,
+      "out_scope": 4,
+      "retrieval_top1_accuracy": 100.0,
+      "answer_correctness": 100.0,
+      "idk_recall": 25.0,
+      "false_handoff_rate": 0.0,
+      "unsafe_answers_pct": 75.0,
+      "unsafe_answers_count": 3,
+      "language_match": 100.0,
+      "latency_p50_s": 2.801,
+      "latency_p95_s": 3.63,
+      "latency_mean_s": 2.698,
+      "path_mix": {
+        "generated": 14,
+        "retry": 0,
+        "fallback": 0,
+        "handoff": 1,
+        "unknown": 0
+      }
+    },
+    "bn": {
+      "total": 13,
+      "in_scope": 9,
+      "out_scope": 4,
+      "retrieval_top1_accuracy": 77.78,
+      "answer_correctness": 87.5,
+      "idk_recall": 50.0,
+      "false_handoff_rate": 11.11,
+      "unsafe_answers_pct": 50.0,
+      "unsafe_answers_count": 2,
+      "language_match": 92.31,
+      "latency_p50_s": 2.517,
+      "latency_p95_s": 4.133,
+      "latency_mean_s": 2.193,
+      "path_mix": {
+        "generated": 10,
+        "retry": 0,
+        "fallback": 0,
+        "handoff": 3,
+        "unknown": 0
+      }
+    }
+  }
+}
