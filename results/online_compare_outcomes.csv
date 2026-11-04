@@ -1,0 +1,41 @@
+id,language,predicted_path,predicted_faq_id,answer_correctness,language_match,latency_s,reply_excerpt
+1,banglish,generated,19,True,True,0.585,Personal loan er interest rate 12% per year.
+2,en,generated,8,True,True,0.587,"A BEFTN transfer is credited by the next working day, as long as it is sent before 3:00 PM."
+3,banglish,generated,24,True,True,1.335,Apni 30 din er moddhe 16999 call kore ba branch e giye report korte paren. Amra 15 working day er moddhe investigate kor
+4,en,generated,17,True,True,0.999,"If you encash your FDR early, the interest is paid at the savings‑account rate of 4 % per year from the deposit date, an"
+5,en,generated,23,True,True,1.023,A flat late payment fee of BDT 500 applies if you miss the due date.
+6,bn,generated,,False,False,1.537,
+7,banglish,generated,7,True,True,1.016,Nirbhor Bank‑er account‑e daily transfer limit holo **BDT 10 lakh**. Onno bank‑e BEFTN‑er maddhome daily limit holo **BD
+8,en,generated,11,True,True,0.798,"You can obtain the last 6 months of statements for free through the NB Go mobile app. If you prefer a printed, stamped s"
+9,bn,generated,25,True,True,1.291,SMS অ্যালার্টের জন্য বছরে BDT 120 ফ্ল্যাট চার্জ করা হয়।
+10,bn,generated,,False,True,0.663,চেক বইটি আপনার অনুরোধের পর ৩ কর্মদিবসের মধ্যে প্রস্তুত হয়।
+11,en,handoff,,,True,0.833,"I don't know, let me connect you to a person."
+12,banglish,generated,16,True,True,0.841,"FDR er minimum amount holo BDT 25,000."
+13,bn,handoff,,,False,1.394,"I don't know, let me connect you to a person."
+14,bn,generated,9,True,True,0.8,"আপনি এক দিনে একটি কার্ডে সর্বোচ্চ BDT 50,000 তোলা পারেন, এবং একক লেনদেনে সর্বোচ্চ BDT 20,000।"
+15,en,generated,14,True,True,0.651,"Yes. You can open a joint account with up to 2 holders, and both holders (e.g., you and your spouse) must sign the accou"
+16,en,generated,1,True,True,0.962,"You need your NID or passport, two passport‑size photos, and nominee details. A TIN certificate is optional. The minimum"
+17,banglish,generated,28,True,True,0.94,Apni branch‑e likhito stop‑payment request submit korun. Ekta cheque‑er jonno fee holo BDT 100.
+18,bn,generated,,False,False,0.969,
+19,bn,generated,,False,False,1.411,
+20,bn,generated,2,True,True,1.025,"সেভিংস অ্যাকাউন্টের জন্য গড় মাসিক ন্যূনতম ব্যালেন্স **BDT 1,000** রাখতে হবে। যদি এটি কমে যায়, তাহলে ত্রৈমাসিক ফি **BDT"
+21,en,handoff,,,True,0.474,"I don't know, let me connect you to a person."
+22,bn,generated,,False,False,0.954,
+23,banglish,generated,3,True,True,0.634,Prothom bochor free. Ditiyo bochor theke annual fee holo BDT 500.
+24,banglish,generated,5,True,True,0.796,"NB Go app‑e Settings → Card → Reset PIN option‑ta use korun, ba kono Nirbhor Bank ATM‑e giye apnar registered number‑e a"
+25,en,generated,7,True,False,1.423,"শাখাগুলো রবিবার থেকে বৃহস্পতিবার, সকাল 10:"
+26,bn,generated,1,True,True,1.088,"আপনার শাখায় একটি নমিনি পরিবর্তন ফর্ম জমা দিন, নতুন নমিনির NID এবং ছবি সহ। অ্যাকাউন্ট ধারক এবং নমিনি উভ"
+27,bn,generated,4,False,True,0.705,আপনার কার্ড হারিয়ে গেলে বা চুরি হয়ে গেলে তৎক্ষণাৎ ২৪ ঘণ্টার হটলাইন 16999‑এ কল করে কার্ডটি ব্লক করুন। নতুন কার্ডটি আপনা
+28,en,generated,6,True,True,0.827,"Download NB Go, choose **Register**, enter your account number and registered mobile number, then enter the OTP we send "
+29,en,generated,26,True,True,0.542,Receiving remittance is free.
+30,en,generated,20,True,True,0.673,You can borrow up to 70% of the property value.
+31,banglish,generated,21,True,True,0.768,"Credit card pete hole, apnar mashik income kam se kam BDT 40,000 hote hobe."
+32,en,handoff,,,True,0.465,"I don't know, let me connect you to a person."
+33,banglish,generated,,False,False,0.969,
+34,bn,generated,12,True,True,0.919,"আপনার শাখায় যান, আপনার NID নিয়ে আপডেট ফর্ম পূরণ করুন, অথবা মুখের পরিচয় যাচাইয়ের পরে NB Go অ্যাপে আপডেট করুন।"
+35,banglish,generated,1,False,False,0.913,"যদি কোনো গ্রাহকের লেনদেন না থাকে ১২ মাসের বেশি, অ্যাকাউন্ট ডরম্যান্ট হয়ে যায়। পুনরায় সক্রিয় করতে আপনার শাখায় NID নি"
+36,en,handoff,,,True,0.495,"I don't know, let me connect you to a person."
+37,banglish,generated,,False,False,0.96,
+38,banglish,generated,30,True,True,0.552,KYC protiti **5** bochor por update korte hoy.
+39,bn,generated,,False,False,1.519,
+40,en,generated,29,True,True,0.945,"Visit your branch with your NID and fill in the closure form. If the account is closed within 6 months of opening, a fee"
