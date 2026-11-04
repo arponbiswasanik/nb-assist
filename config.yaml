@@ -1,8 +1,15 @@
 ollama:
-  host: 127.0.0.1
+  host: "127.0.0.1"
   port: 11434
   timeout_s: 60
-  keep_alive_s: 300
+  keep_alive_s: 300          # keep model warm between calls (warm-up at startup)
+database:
+  host: "127.0.0.1"
+  port: 5433                  # host port from docker-compose.yml
+  name: nbassist
+  user: nbassist
+  password: nbassist_dev
+  log_conversations: true     # audit trail; every query, decision, latency
 models:
   primary: gemma3:4b
   embedding: bge-m3

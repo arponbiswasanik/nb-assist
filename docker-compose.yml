@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: nb_assist_pg
+    environment:
+      POSTGRES_USER: nbassist
+      POSTGRES_PASSWORD: nbassist_dev
+      POSTGRES_DB: nbassist
+    ports:
+      - "5433:5432"
+    volumes:
+      - nb_assist_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nbassist"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nb_assist_pg_data:

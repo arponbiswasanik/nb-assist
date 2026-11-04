@@ -1,5 +1,5 @@
 level,description,retrieval_top1_accuracy,answer_correctness,idk_recall,false_handoff_rate,unsafe_answers_count,language_match,latency_p50_s,latency_p95_s
-A,"LLM with full FAQ in context, no architecture",86.67,96.3,100.0,10.0,0,72.5,1.951,3.919
-B,"+ retrieval (no gate, no validators, no answer bank)",90.0,96.43,40.0,6.67,6,97.5,2.856,4.756
-C,"+ gate (slot + thresholds + verifier, no validators)",90.0,96.43,100.0,6.67,0,97.5,4.433,6.96
+A,"LLM with full FAQ in context, no architecture",83.33,96.15,100.0,13.33,0,72.5,2.15,4.178
+B,"+ retrieval (no gate, no validators, no answer bank)",90.0,96.43,40.0,6.67,6,97.5,3.029,4.987
+C,"+ gate (slot + thresholds + verifier, no validators)",90.0,96.43,100.0,6.67,0,97.5,4.462,6.987
 D,+ validators + answer bank (full system),90.0,100.0,100.0,6.67,0,100.0,4.762,6.303

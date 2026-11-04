@@ -1,8 +1,12 @@
-"""Pipeline — wires S0 through S7 into one handle_query call.
+"""Pipeline - wires S0 through S7 into one handle_query call.
 
 Each stage is timed and recorded in the trace. The model never gets
 the last word on a banking reply: failure at any stage fails closed
 to an IDK template or to the verified answer verbatim.
+
+If a Storage instance is passed in, every query is appended to the
+conversation_log table in Postgres. Logging is best-effort: a DB
+failure never breaks the user reply.
 """
 
 from __future__ import annotations
@@ -17,6 +21,7 @@ from .gate import decide as gate_decide
 from .generate import generate, _GenerationFailure
 from .validate import run_all
 from .trace import Trace, TraceSink
+from .storage import Storage
 
 
 @dataclass
@@ -34,23 +39,44 @@ def _idk(lang: Lang, idk_bank: dict) -> str:
             or "I don't know, let me connect you to a person.")
 
 
-def _finish_handoff(lang, idk_bank, trace, t_start, sink) -> Reply:
+def _log_to_storage(storage, trace, lang, path, text):
+    """Best-effort audit log. Never raises."""
+    if storage is None:
+        return
+    try:
+        top1 = (trace.retrieval_top[0]["faq_id"]
+                if trace.retrieval_top else None)
+        storage.log_conversation(
+            query=trace.query, language=lang,
+            predicted_path=path, predicted_faq_id=top1,
+            gate_zone=trace.gate_zone, verifier_said=trace.gate_verifier,
+            latency_s=trace.total_duration_s,
+            reply_excerpt=text[:500] if text else None)
+    except Exception:
+        pass  # logging must never break the user reply
+
+
+def _finish_handoff(lang, idk_bank, trace, t_start, sink,
+                    storage=None) -> Reply:
     text = _idk(lang, idk_bank)
     trace.final_path = "handoff"
     trace.final_text = text
     trace.total_duration_s = time.perf_counter() - t_start
     if sink:
         sink.write(trace)
+    _log_to_storage(storage, trace, lang, "handoff", text)
     return Reply(text=text, path="handoff", language=lang,
                  latency_s=trace.total_duration_s, trace=trace)
 
 
-def _finish(text, path, lang, trace, t_start, sink) -> Reply:
+def _finish(text, path, lang, trace, t_start, sink,
+            storage=None) -> Reply:
     trace.final_path = path
     trace.final_text = text
     trace.total_duration_s = time.perf_counter() - t_start
     if sink:
         sink.write(trace)
+    _log_to_storage(storage, trace, lang, path, text)
     return Reply(text=text, path=path, language=lang,
                  latency_s=trace.total_duration_s, trace=trace)
 
@@ -79,7 +105,8 @@ def handle_query(query: str,
                  faq_lookup: dict,
                  answer_bank: dict,
                  idk_bank: dict,
-                 trace_sink: TraceSink | None = None) -> Reply:
+                 trace_sink: TraceSink | None = None,
+                 storage: Storage | None = None) -> Reply:
     t_start = time.perf_counter()
     trace = Trace(query=query, normalized="", language="en")
 
@@ -104,7 +131,8 @@ def handle_query(query: str,
     trace.add_stage("policy", time.perf_counter() - t0,
                     {"handoff": pol.handoff, "rule": pol.rule})
     if pol.handoff:
-        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink)
+        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink,
+                               storage)
 
     # S3 retrieve
     t0 = time.perf_counter()
@@ -115,7 +143,8 @@ def handle_query(query: str,
     trace.add_stage("retrieve", time.perf_counter() - t0,
                     {"top3": top_summary, "margin": retr.margin})
     if not retr.results:
-        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink)
+        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink,
+                              storage)
 
     # S4 gate
     top = retr.results[0]
@@ -129,7 +158,8 @@ def handle_query(query: str,
                     {"zone": g.zone, "verifier": g.verifier_said,
                      "answerable": g.answerable})
     if not g.answerable:
-        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink)
+        return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink,
+                               storage)
 
     # S5 + S6 generate, validate, retry, fallback
     ab = answer_bank.get(top.faq_id, {})
@@ -137,14 +167,19 @@ def handle_query(query: str,
 
     text, ok = _try_generate(client, config, norm, verified, lang, trace, 1)
     if ok:
-        return _finish(text, "generated", lang, trace, t_start, trace_sink)
+        return _finish(text, "generated", lang, trace, t_start, trace_sink,
+                       storage)
 
     retries = config.get("validators", {}).get("retry_on_fail", 1)
     if retries >= 1:
-        text, ok = _try_generate(client, config, norm, verified, lang, trace, 2)
+        text, ok = _try_generate(client, config, norm, verified, lang,
+                                  trace, 2)
         if ok:
-            return _finish(text, "retry", lang, trace, t_start, trace_sink)
+            return _finish(text, "retry", lang, trace, t_start, trace_sink,
+                           storage)
 
     if config.get("validators", {}).get("fallback_to_verified", True):
-        return _finish(verified, "fallback", lang, trace, t_start, trace_sink)
-    return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink)
+        return _finish(verified, "fallback", lang, trace, t_start, trace_sink,
+                       storage)
+    return _finish_handoff(lang, idk_bank, trace, t_start, trace_sink,
+                           storage)

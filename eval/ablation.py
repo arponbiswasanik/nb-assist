@@ -8,7 +8,8 @@
   D: + validators + answer bank (full system, loaded from
      results/final_test_metrics.json)
 
-Shares the retriever index across B and C. A doesn't use the retriever.
+Uses Postgres + pgvector for the retriever index when the DB is
+available; otherwise falls back to CSV-built embeddings.
 
 Writes:
   results/ablation_a_metrics.json
@@ -37,6 +38,7 @@ sys.path.insert(0, str(ROOT))
 from nb_assist.llm import OllamaClient, LLMUnavailable
 from nb_assist.retrieve import HybridRetriever
 from nb_assist.pipeline import handle_query
+from nb_assist.storage import Storage
 from eval.metrics import compute_metrics
 from eval.online_compare import (
     _detect_idk, _language_match, _identify_faq_id, _key_facts_check,
@@ -90,6 +92,36 @@ def _no_validators_config(config):
         "fallback_to_verified": False,
     }
     return cfg
+
+
+def _connect_storage(config: dict) -> tuple[Storage | None, bool]:
+    """Try Postgres. Returns (storage, use_db)."""
+    if not config.get("database"):
+        return None, False
+    try:
+        storage = Storage.from_config(config).connect()
+        with storage._conn.cursor() as cur:
+            cur.execute("SELECT 1")
+        return storage, True
+    except Exception as e:
+        print(f"storage: Postgres not available ({e}); "
+              "falling back to CSV-built embeddings")
+        return None, False
+
+
+def _build_retriever(config, client, faq_rows, paraphrase_rows, storage, use_db):
+    """Build the retriever index from Postgres if possible, else CSV."""
+    if use_db:
+        db_faq = storage.load_faq()
+        db_paraphrases = storage.load_paraphrases()
+        if not db_faq or not db_faq[0].get("embedding"):
+            print("  DB has no embeddings; falling back to CSV build")
+            return HybridRetriever(config, client).build_index(
+                faq_rows, paraphrase_rows)
+        return HybridRetriever(config, client).build_index_from_storage(
+            db_faq, db_paraphrases)
+    return HybridRetriever(config, client).build_index(
+        faq_rows, paraphrase_rows)
 
 
 def _run_level_a(client, config, faq_rows, test_rows, gold_map):
@@ -157,7 +189,8 @@ def _run_level_a(client, config, faq_rows, test_rows, gold_map):
 
 
 def _run_pipeline_level(client, config, faq_lookup, answer_bank, idk_bank,
-                        test_rows, gold_map, retriever, level_name):
+                        test_rows, gold_map, retriever, level_name,
+                        storage=None):
     """Run the full pipeline for a given configuration."""
     print(f"\n=== {level_name} ===")
     outcomes = []
@@ -168,7 +201,8 @@ def _run_pipeline_level(client, config, faq_lookup, answer_bank, idk_bank,
 
         try:
             reply = handle_query(question, retriever, client, config,
-                                 faq_lookup, answer_bank, idk_bank)
+                                 faq_lookup, answer_bank, idk_bank,
+                                 storage=storage)
         except Exception as e:
             print(f"  [{i:>3}/{len(test_rows)}] id={qid} ERROR {e}")
             outcomes.append({
@@ -249,63 +283,80 @@ def main() -> int:
         print(f"  ERROR: {e}")
         return 1
 
+    # Connect to Postgres (best-effort, falls back to CSV if down).
+    storage, use_db = _connect_storage(config)
+    if use_db:
+        print("storage: Postgres connected (loading embeddings from DB)")
+
     print("building retriever index (shared across levels B and C)...")
     t0 = time.perf_counter()
     try:
-        retriever = HybridRetriever(config, client).build_index(
-            faq_rows, paraphrase_rows)
+        retriever = _build_retriever(config, client, faq_rows,
+                                     paraphrase_rows, storage, use_db)
         print(f"  index built in {time.perf_counter() - t0:.1f}s")
     except LLMUnavailable as e:
         print(f"  ERROR: {e}")
+        if storage is not None:
+            storage.close()
         return 1
 
     results_dir = ROOT / "results"
     results_dir.mkdir(exist_ok=True)
 
-    # Level A: baseline (no architecture)
-    a_outcomes = _run_level_a(client, config, faq_rows, test_rows, gold_map)
-    a_report = compute_metrics(a_outcomes)
-    (results_dir / "ablation_a_metrics.json").write_text(
-        json.dumps(a_report.to_dict(), ensure_ascii=False, indent=2),
-        encoding="utf-8")
-
-    # Level B: + retrieval, no gate, no validators, no answer bank
-    b_config = _no_validators_config(_no_gate_config(config))
-    b_outcomes = _run_pipeline_level(
-        client, b_config, faq_lookup, {}, idk_bank,
-        test_rows, gold_map, retriever,
-        "level B: + retrieval (no gate, no validators, no answer bank)")
-    b_report = compute_metrics(b_outcomes)
-    (results_dir / "ablation_b_metrics.json").write_text(
-        json.dumps(b_report.to_dict(), ensure_ascii=False, indent=2),
-        encoding="utf-8")
-
-    # Level C: + gate (full), no validators, no answer bank
-    c_config = _no_validators_config(config)
-    c_outcomes = _run_pipeline_level(
-        client, c_config, faq_lookup, {}, idk_bank,
-        test_rows, gold_map, retriever,
-        "level C: + gate (slot + thresholds + verifier, no validators)")
-    c_report = compute_metrics(c_outcomes)
-    (results_dir / "ablation_c_metrics.json").write_text(
-        json.dumps(c_report.to_dict(), ensure_ascii=False, indent=2),
-        encoding="utf-8")
-
-    # Level D: full system - load from existing final_test_metrics.json
-    d_path = results_dir / "final_test_metrics.json"
-    if d_path.exists():
-        d_report_dict = json.loads(d_path.read_text(encoding="utf-8"))
-    else:
-        print("\n=== level D (full system) - final_test_metrics.json missing, "
-              "running fresh ===")
-        d_outcomes = _run_pipeline_level(
-            client, config, faq_lookup, answer_bank, idk_bank,
-            test_rows, gold_map, retriever, "level D: full system")
-        d_report = compute_metrics(d_outcomes)
-        d_report_dict = d_report.to_dict()
-        (results_dir / "ablation_d_metrics.json").write_text(
-            json.dumps(d_report_dict, ensure_ascii=False, indent=2),
+    try:
+        # Level A: baseline (no architecture) - no storage needed
+        a_outcomes = _run_level_a(client, config, faq_rows, test_rows, gold_map)
+        a_report = compute_metrics(a_outcomes)
+        (results_dir / "ablation_a_metrics.json").write_text(
+            json.dumps(a_report.to_dict(), ensure_ascii=False, indent=2),
             encoding="utf-8")
+
+        # Level B: + retrieval, no gate, no validators, no answer bank
+        b_config = _no_validators_config(_no_gate_config(config))
+        b_outcomes = _run_pipeline_level(
+            client, b_config, faq_lookup, {}, idk_bank,
+            test_rows, gold_map, retriever,
+            "level B: + retrieval (no gate, no validators, no answer bank)",
+            storage=storage)
+        b_report = compute_metrics(b_outcomes)
+        (results_dir / "ablation_b_metrics.json").write_text(
+            json.dumps(b_report.to_dict(), ensure_ascii=False, indent=2),
+            encoding="utf-8")
+
+        # Level C: + gate (full), no validators, no answer bank
+        c_config = _no_validators_config(config)
+        c_outcomes = _run_pipeline_level(
+            client, c_config, faq_lookup, {}, idk_bank,
+            test_rows, gold_map, retriever,
+            "level C: + gate (slot + thresholds + verifier, no validators)",
+            storage=storage)
+        c_report = compute_metrics(c_outcomes)
+        (results_dir / "ablation_c_metrics.json").write_text(
+            json.dumps(c_report.to_dict(), ensure_ascii=False, indent=2),
+            encoding="utf-8")
+
+        # Level D: full system - load from existing final_test_metrics.json
+        d_path = results_dir / "final_test_metrics.json"
+        if d_path.exists():
+            d_report_dict = json.loads(d_path.read_text(encoding="utf-8"))
+        else:
+            print("\n=== level D (full system) - final_test_metrics.json missing, "
+                  "running fresh ===")
+            d_outcomes = _run_pipeline_level(
+                client, config, faq_lookup, answer_bank, idk_bank,
+                test_rows, gold_map, retriever, "level D: full system",
+                storage=storage)
+            d_report = compute_metrics(d_outcomes)
+            d_report_dict = d_report.to_dict()
+            (results_dir / "ablation_d_metrics.json").write_text(
+                json.dumps(d_report_dict, ensure_ascii=False, indent=2),
+                encoding="utf-8")
+    finally:
+        if storage is not None:
+            try:
+                storage.close()
+            except Exception:
+                pass
 
     # Write ablation summary CSV.
     descriptions = {
